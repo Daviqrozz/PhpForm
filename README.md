@@ -6,3 +6,4 @@ Este projeto é uma aplicação simples em PHP que valida uma senha enviada por 
 - HTML
 - Sessões (`$_SESSION`)
 - Filtros de segurança (`filter_input`)
+- Javascript (Pagina Dinamica)
