@@ -3,7 +3,7 @@ Este projeto é uma aplicação simples em PHP que valida uma senha enviada por 
 ## 🧰 Tecnologias utilizadas
 
 - PHP (versão 7.4+ recomendada)
-- HTML
+- HTML/CSS (BOOTSTRAP)
 - Sessões (`$_SESSION`)
 - Filtros de segurança (`filter_input`)
 - Javascript (Pagina Dinamica)
