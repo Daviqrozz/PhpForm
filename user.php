@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'db.php';
 class User
 {
 
@@ -24,7 +25,7 @@ class User
         return strlen($this->password) >= 8;
     }
 
-    public function checkPasswordEspecialChar() :bool
+    public function checkPasswordEspecialChar(): bool
     {
         $userpassword = $this->password;
         $regex = "/[!@#$%^&*()_+\-= \[\]{};':\",.<>\/?|`~]/";
@@ -36,13 +37,9 @@ class User
         }
     }
 
-    public function checkPassword() :bool
+    public function checkPassword(): bool
     {
-        if ($this->checkPasswordLen() && $this->checkPasswordEspecialChar()) {
-            return $this->getUser();
-        } else {
-            return 'Senha invalida';
-        }
+        return $this->checkPasswordLen() && $this->checkPasswordEspecialChar();
     }
 }
 
@@ -55,8 +52,15 @@ if ($username && $usermail && $password) {
     $user = new User($username, $usermail, $password);
 
     if ($user->checkPassword()) {
-        $_SESSION['username'] = $user->getUser(); 
-        header("Location: welcome.php");        
+        $_SESSION['username'] = $user->getUser();
+
+        $query = "INSERT INTO users (username,usermail,password) VALUES (?,?,?) ";
+        $creator = $conn->prepare($query);
+
+        $creator->bind_param('sss', $username, $usermail, $password);
+        $creator->execute();
+
+        header("Location: welcome.php");
         exit;
     } else {
         echo "❌ Senha inválida.";

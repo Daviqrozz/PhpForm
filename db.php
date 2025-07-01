@@ -25,3 +25,6 @@ if ($conn->query($sql) === TRUE ){
 }else{
     echo 'Erro ao criar tabela: '.$conn->error;
 }
+
+
+

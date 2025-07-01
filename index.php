@@ -12,8 +12,6 @@
 
 <body>
 
-
-
     <div class="signupForm bg-secondary">
 
         <div class="signup text-center">
