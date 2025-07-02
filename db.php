@@ -9,8 +9,6 @@ $conn = new mysqli($host,$user,$password,$dbname,$port);
 
 if ($conn->connect_error){
        die("❌ Conexão falhou: " . $conn->connect_error);
-} else {
-    echo "✅ Conexão bem-sucedida!";
 }
 
 $sql = 'CREATE TABLE IF NOT EXISTS users(
@@ -20,11 +18,6 @@ usermail VARCHAR(50) NOT NULL,
 password VARCHAR(50) NOT NULL
 )';
 
-if ($conn->query($sql) === TRUE ){
-    echo 'Tabela criada com sucesso!';
-}else{
+if ($conn->query($sql) === FALSE ){
     echo 'Erro ao criar tabela: '.$conn->error;
 }
-
-
-
